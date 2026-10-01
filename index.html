@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soundwave — Music for your day</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Soundwave home">♫ Soundwave</a>
+    <nav aria-label="Main navigation">
+      <a href="#library">Library</a>
+      <button id="open-login" type="button">Log in</button>
+      <button id="open-signup" type="button">Sign up</button>
+      <button id="open-admin" type="button">Admin</button>
+      <button id="logout-button" type="button" hidden>Log out</button>
+    </nav>
+  </header>
+  <main id="home">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <p class="eyebrow">YOUR MUSIC, YOUR MOMENT</p>
+      <h1 id="welcome-title">Find your next favorite song.</h1>
+      <p>Explore a small collection of tracks and make a space for the music you love.</p>
+    </section>
+    <section id="auth-area" class="auth-area" aria-label="Account">
+      <form id="login-form">
+        <h2>Welcome back</h2>
+        <label for="login-email">Email</label><input id="login-email" name="email" type="email" autocomplete="email" required>
+        <label for="login-password">Password</label><input id="login-password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Log in</button><p id="login-message" role="status"></p>
+      </form>
+      <form id="signup-form" hidden>
+        <h2>Create your account</h2>
+        <label for="signup-name">Name</label><input id="signup-name" name="name" type="text" autocomplete="name" required>
+        <label for="signup-email">Email</label><input id="signup-email" name="email" type="email" autocomplete="email" required>
+        <label for="signup-password">Password</label><input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+        <button type="submit">Sign up</button><p id="signup-message" role="status"></p>
+      </form>
+      <form id="admin-login-form" hidden>
+        <h2>Admin sign in</h2>
+        <label for="admin-username">Username</label><input id="admin-username" name="username" autocomplete="username" required>
+        <label for="admin-password">Password</label><input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Sign in as admin</button><p id="admin-login-message" role="status"></p>
+      </form>
+    </section>
+    <section id="admin-panel" class="admin-panel" hidden>
+      <div class="section-heading"><div><p class="eyebrow">ADMIN AREA</p><h2>Manage your songs</h2></div><button id="admin-logout" type="button">Log out</button></div>
+      <p class="admin-note">Add an audio file from your computer or remove a track from the library.</p>
+      <form id="add-track-form" class="add-track-form">
+        <label for="new-title">Song title</label><input id="new-title" name="title" required>
+        <label for="new-artist">Artist</label><input id="new-artist" name="artist" required>
+        <label for="new-audio">Audio file</label><input id="new-audio" name="audio" type="file" accept="audio/*" required>
+        <button type="submit">Add song</button>
+      </form>
+      <p id="admin-message" role="status"></p>
+      <ul id="admin-track-list" class="admin-track-list"></ul>
+    </section>
+    <section id="library" class="library" aria-labelledby="library-title">
+      <div class="section-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h2 id="library-title">Made for listening</h2></div></div>
+      <div class="track-list">
+        <article class="track" data-title="Baarish-e-Ishq" data-artist="Bollywood Pop" data-audio="audio/baarish-e-ishq-bollywood-pop-music-378859.mp3">
+          <span class="track-number">01</span><div><h3>Baarish-e-Ishq</h3><p>Bollywood Pop</p></div><button class="play-button" type="button" aria-label="Play Baarish-e-Ishq">Play</button>
+        </article>
+        <article class="track" data-title="Dhurandhar Song Baloch" data-artist="Sagar Kadam X VDJ LOVE" data-audio="audio/Dhurandhar%20Song%20Baloch%20-%20Sagar%20Kadam%20X%20VDJ%20LOVE.mp3">
+          <span class="track-number">02</span><div><h3>Dhurandhar Song Baloch</h3><p>Sagar Kadam X VDJ LOVE</p></div><button class="play-button" type="button" aria-label="Play Dhurandhar Song Baloch">Play</button>
+        </article>
+        <article class="track" data-title="Yeh Tu Ne Kya Kiya" data-artist="Your added track" data-audio="audio/yeh%20tu%20ne%20kya%20kiya%206.mp3">
+          <span class="track-number">03</span><div><h3>Yeh Tu Ne Kya Kiya</h3><p>Your added track</p></div><button class="play-button" type="button" aria-label="Play Yeh Tu Ne Kya Kiya">Play</button>
+        </article>
+      </div>
+    </section>
+  </main>
+  <audio id="audio-player" preload="none"></audio>
+  <footer class="player" aria-label="Music player">
+    <div><strong id="now-playing-title">Nothing playing</strong><p id="now-playing-artist">Choose a track to begin</p></div>
+    <button id="player-toggle" type="button" disabled>Play</button>
+  </footer>
+</body>
+</html>
